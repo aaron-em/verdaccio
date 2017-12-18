@@ -327,7 +327,9 @@ class ProxyStorage {
    */
   isUplinkValid(url) {
     url = URL.parse(url);
-    return url.protocol === this.url.protocol && url.host === this.url.host && url.path.indexOf(this.url.path) === 0;
+	  return url.protocol === this.url.protocol
+		  && (url.host === this.url.host || url.hostname === this.url.hostname)
+		  && url.path.indexOf(this.url.path) === 0;
   }
 
   /**
